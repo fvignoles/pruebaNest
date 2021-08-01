@@ -1,8 +1,9 @@
+import { MensajesService } from './../dist/mensajes/mensajes.service';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MensajesController } from './mensajes/mensajes.controller';
-import { TypeOrmModule} from '@nestjs/typeorm';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -13,11 +14,11 @@ import { TypeOrmModule} from '@nestjs/typeorm';
       username: 'postgres',
       password: 'Post131075',
       database: 'sendemeapp_db',
-      entities: [__dirname + "/**/*.entity{.ts,.js}"],
-      synchronize: true    
-    }),      
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true,
+    }),
   ],
   controllers: [AppController, MensajesController],
-  providers: [AppService],
+  providers: [MensajesService, AppService],
 })
 export class AppModule {}
